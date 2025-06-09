@@ -1,0 +1,16 @@
+[Unit]
+Description=GeoIP Helper Service
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/opt/nebula/venv/geoip_helper
+ExecStart=/opt/nebula/venv/geoip_helper/bin/python3 main.py
+Restart=on-failure
+RestartSec=10
+Environment="SCYLLA_SERVER_1=<>"
+Environment="SCYLLA_SERVER_2=<>"
+Environment="SCYLLA_SERVER_3=<>"
+
+[Install]
+WantedBy=multi-user.target
